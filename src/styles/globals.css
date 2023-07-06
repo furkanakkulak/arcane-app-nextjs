@@ -2,26 +2,116 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+textarea:focus,
+input:focus {
+  outline: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  height: 100%;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+#__next {
+  height: 100%;
+}
+
+.sidebar {
+  @apply h-full border-r-[0.5px] hidden lg:block flex-1;
+}
+
+.sidebar .profile-img {
+  @apply mt-8 mx-auto rounded-full shadow-md border w-3/5;
+}
+
+.sidebar-links {
+  @apply flex flex-col gap-y-5 mt-16 text-xl px-5;
+}
+
+.sidebar .logo {
+  @apply text-center flex justify-center items-center tracking-wide font-extrabold text-5xl text-indigo-700 border-b-[0.5px] h-20 px-5;
+}
+
+.sidebar-link a {
+  @apply flex gap-x-2 w-full items-center px-3 py-1.5 text-center rounded-xl text-slate-500;
+}
+
+.sidebar-link a.item svg {
+  @apply text-indigo-800;
+}
+
+.sidebar-link a.item:hover {
+  @apply bg-indigo-100 text-black;
+}
+.sidebar-link a.item.active {
+  @apply bg-indigo-100 text-black;
+}
+
+/** navbar **/
+
+.navbar {
+  @apply bg-white z-20 mt-20 fixed top-2.5 left-0 right-0 w-[96%] shadow-xl mx-auto border rounded-xl lg:hidden;
+}
+
+.navbar-links {
+  @apply flex flex-col gap-y-5 py-5 z-10 text-xl px-5;
+}
+
+nav .logo {
+  @apply text-center flex justify-center items-center tracking-wide font-extrabold text-3xl lg:hidden text-indigo-700 border-b-[0.5px] h-20;
+}
+
+.navbar-link a.logout svg {
+  @apply text-red-800;
+}
+
+.navbar-link a.logout:hover {
+  @apply bg-red-100 text-black;
+}
+
+.navbar-link a {
+  @apply flex gap-x-2 w-full items-center px-3 py-1.5 text-center rounded-xl text-slate-500;
+}
+
+.navbar-link a.item svg {
+  @apply text-indigo-800;
+}
+
+.navbar-link a.item:hover {
+  @apply bg-indigo-100 text-black;
+}
+.navbar-link a.item.active {
+  @apply bg-indigo-100;
+}
+
+.dashboard-cards {
+  @apply flex flex-col md:flex-row gap-5 mt-10;
+}
+
+.dashboard-cards .card {
+  @apply px-5 py-2.5 flex-[1] flex justify-between items-center rounded-xl h-[120px] relative shadow-md select-none;
+}
+
+.dashboard-cards .card .left,
+.dashboard-cards .card .right {
+  @apply flex flex-col justify-between h-full;
+}
+
+.dashboard-cards .card .left .title {
+  @apply font-bold text-base text-slate-500 uppercase;
+}
+
+.dashboard-cards .card .left .counter {
+  @apply text-3xl font-light tracking-wider;
+}
+
+.dashboard-cards .card .left .link {
+  @apply text-sm underline underline-offset-4 border-black;
+}
+
+.dashboard-cards .card .right .percentage {
+  @apply text-lg flex gap-x-2 items-end justify-center text-green-400 w-max;
+}
+
+main .page-title {
+  @apply text-4xl font-medium tracking-wide text-center text-indigo-600;
 }
