@@ -1,10 +1,5 @@
 import { AppContext } from '@/context/ContextProvider';
-import {
-  faHouse,
-  faRightFromBracket,
-  faShop,
-  faUsers,
-} from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faShop, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -72,7 +67,7 @@ const Sidebar = () => {
               className={`item ${
                 router.pathname == '/products' ? 'active' : ''
               }`}
-              href={'/products'}
+              href={'#'}
             >
               <FontAwesomeIcon
                 icon={faShop}

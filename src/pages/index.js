@@ -1,20 +1,7 @@
-import { useContext } from 'react';
-import { useRouter } from 'next/router';
-import { AppContext } from '@/context/ContextProvider';
-import {
-  faScaleBalanced,
-  faScaleUnbalanced,
-  faShop,
-  faUser,
-  faWallet,
-} from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
+import { faShop, faUser, faWallet } from '@fortawesome/free-solid-svg-icons';
 import Widget from '@/components/Widget';
 
 const Dashboard = () => {
-  const router = useRouter();
-  const { isLoggedIn } = useContext(AppContext);
-
   return (
     <main>
       <h1 className="page-title">Welcome to the Dashboard!</h1>

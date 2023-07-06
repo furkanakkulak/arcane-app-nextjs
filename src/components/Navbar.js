@@ -2,12 +2,12 @@ import { AppContext } from '@/context/ContextProvider';
 import {
   faBars,
   faHouse,
-  faRightFromBracket,
   faSearch,
   faShop,
   faUsers,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const [showProfile, setShowProfile] = useState(false);
 
-  const { toggleSidebar, showSidebar, logout } = useContext(AppContext);
+  const { toggleSidebar, showSidebar, logout, user } = useContext(AppContext);
 
   const toggleProfile = () => {
     setShowProfile((prevState) => !prevState);
@@ -42,13 +42,13 @@ const Navbar = () => {
               />
             </button>
             <div className="hidden lg:flex items-center border-[1px] rounded-lg">
-              <div className="bg-slate-100 h-[30px] w-[30px] flex justify-center items-center rounded-tl-lg rounded-bl-lg">
+              <div className="bg-slate-100 h-[40px] w-[40px] flex justify-center items-center rounded-tl-lg rounded-bl-lg">
                 <FontAwesomeIcon icon={faSearch} />
               </div>
               <input
                 type="text"
                 placeholder="Search.."
-                className="rounded-tr-lg rounded-br-lg px-1 py-0.5 h-[30px]"
+                className="rounded-tr-lg rounded-br-lg px-1 py-0.5 h-[40px]"
               />
             </div>
           </div>
@@ -62,18 +62,22 @@ const Navbar = () => {
             <button
               onClick={toggleProfile}
               type="button"
-              className="flex text-sm bg-gray-800 rounded-full md:mr-0"
+              className="flex text-sm border-[0.5px] shadow-2xl rounded-full md:mr-0"
               id="user-menu-button"
               aria-expanded="false"
               data-dropdown-toggle="user-dropdown"
               data-dropdown-placement="bottom"
             >
               <span className="sr-only">Open user menu</span>
-              <img
-                className="w-8 h-8 rounded-full"
-                src="https://media.licdn.com/dms/image/C4E03AQE30YXm923OYA/profile-displayphoto-shrink_800_800/0/1630809681285?e=2147483647&v=beta&t=SvpFq8IqgatSEc9tsKdYvg9uvDlTph61q_HGBa9BJaA"
-                alt="user photo"
-              />
+              {user?.image && (
+                <Image
+                  className="w-8 h-8 rounded-full"
+                  src={user.image}
+                  alt={user.username}
+                  width={100}
+                  height={100}
+                />
+              )}
             </button>
             <div
               className={`z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-xl absolute top-[20px] right-[-15px] ${
@@ -84,10 +88,10 @@ const Navbar = () => {
             >
               <div className="px-4 py-3">
                 <span className="block text-sm text-gray-900 ">
-                  Bonnie Green
+                  {user?.firstName} {user?.lastName}
                 </span>
                 <span className="block text-sm  text-gray-500 truncate ">
-                  name@flowbite.com
+                  {user?.email}
                 </span>
               </div>
               <ul
@@ -95,28 +99,20 @@ const Navbar = () => {
                 aria-labelledby="user-menu-button"
               >
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    href="/"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
                     Dashboard
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="#"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
                     Settings
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Earnings
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <p
@@ -159,7 +155,7 @@ const Navbar = () => {
               className={`item ${
                 router.pathname == '/products' ? 'active' : ''
               }`}
-              href={'/products'}
+              href={'#'}
               onClick={toggleSidebar}
             >
               <FontAwesomeIcon icon={faShop} />

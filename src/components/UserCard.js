@@ -1,5 +1,3 @@
-import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import EditUser from './EditUser';
 import DeleteUser from './DeleteUser';
