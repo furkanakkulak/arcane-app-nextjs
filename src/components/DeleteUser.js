@@ -45,6 +45,28 @@ const DeleteUser = ({ user }) => {
         setSearchUsers(updatedSearchUsers);
       }
     } catch (error) {
+      try {
+        if (allUsers?.users) {
+          const updatedAllUsers = { ...allUsers };
+          updatedAllUsers.users = updatedAllUsers.users.filter(
+            (u) => u.id !== user.id
+          );
+          setAllUsers(updatedAllUsers);
+        }
+        if (searchUsers?.users) {
+          const updatedSearchUsers = { ...searchUsers };
+          updatedSearchUsers.users = updatedSearchUsers.users.filter(
+            (u) => u.id !== user.id
+          );
+          updatedSearchUsers.total = updatedSearchUsers.total - 1;
+          if (updatedSearchUsers.total <= 0) {
+            updatedSearchUsers.total = 0;
+          }
+          setSearchUsers(updatedSearchUsers);
+        }
+      } catch (error) {
+        console.error(error);
+      }
       console.error(error);
     } finally {
       handleClose();

@@ -1,3 +1,4 @@
+import AddNewUser from '@/components/AddNewUser';
 import UserCard from '@/components/UserCard';
 import { AppContext } from '@/context/ContextProvider';
 import {
@@ -11,7 +12,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 
-const users = () => {
+const Users = () => {
   const {
     allUsers,
     fetchAllUsers,
@@ -175,9 +176,7 @@ const users = () => {
               className="rounded-tr-lg rounded-br-lg px-1.5 py-0.5 bg-indigo-100 h-full italic placeholder:text-black placeholder:italic placeholder:text-sm text-sm"
             />
           </div>
-          <button className="px-3 py-1.5 bg-indigo-700 text-white rounded-lg">
-            Add new user
-          </button>
+          <AddNewUser />
         </div>
       </div>
       <div className="grid grid-cols-6 sm:grid-cols-7 gap-2 mt-5 bg-indigo-50 text-indigo-500 font-bold text-sm sm:text-lg py-2.5 rounded-md select-none">
@@ -260,4 +259,4 @@ const users = () => {
   );
 };
 
-export default users;
+export default Users;
