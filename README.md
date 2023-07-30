@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 [Arcane App](https://main--stupendous-squirrel-c4d884.netlify.app/login) is a [Next.js](https://nextjs.org/) ([React.js](https://react.dev/)) based app that uses [DummyJSON](https://dummyjson.com/)'s public API requests to exchange data. It allows users to explore diverse data instances with an expressive interface. The app combines Next.js features and DummyJSON's random data generation to create a unique and engaging experience for users.
 
-[Arcane App](https://main--stupendous-squirrel-c4d884.netlify.app/login) is currently live and testable on Vercel.
+[Arcane App](https://main--stupendous-squirrel-c4d884.netlify.app/login) is currently live and testable on Netlify.
 
 ```
 username: kminchelle
